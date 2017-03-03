@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>App Framework Kitchen Sink</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache"></META>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
+    <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+        
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <script type="text/javascript" charset="utf-8" src="lib/RestCliente.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/RestProducto.js"></script>
+    <script src='cordova.js'></script>
+
+
+</head>
+
+<body>
+    <div id="splashscreen" class='ui-loader heavy'>
+        App Framework
+        <br>
+        <br>
+        <span class='ui-icon ui-icon-loading spin'></span>
+        <h1>Starting app</h1>
+    </div>
+
+    <div class="view splitview">
+        
+        <header>
+            <a class="menuButton" data-left-menu="left" data-transition="cover" style="float:left"></a>
+            <h1>Title</h1>
+        </header>
+        
+        <div class="pages">
+            <!-- Lectura cliente -->
+            <div class="panel" id="r_cliente" data-title="Read Cliente" data-selected="true">
+            </div>
+            <!-- Creacion cliente -->
+            <div class="panel" id="c_cliente" data-title="Create Alumno">
+                <h1>Create Cliente</h1>
+                <div class="container">
+                 <form>
+                  <div class="form-group">
+                    <input type="text" id="c_al_nombre" class="form-control" placeholder="Nombre del Cliente" >
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="c_al_apellidos" class="form-control" placeholder="Apellidos del Cliente"  >
+                  </div>
+                     <div class="form-group">
+                    <input type="text" id="c_al_email" class="form-control" placeholder="Email del Cliente"  >
+                  </div>
+                  <div class="form-group">
+                    <div class="btn btn-danger" onclick="$.cliente.ClienteCreate()">Enviar!</div>
+                  </div>
+                </form>
+                </div>
+            </div>
+            <!-- Borrado cliente -->
+            <div class="panel" id="d_cliente" data-title="Delete Cliente">
+                <h1>Delete Cliente</h1>
+            </div>
+            <!-- Actualizacion cliente -->
+         <div class="panel" id="u_cliente" data-title="Update Alumno">
+                <h1>Update Cliente</h1>
+            </div>
+            <div class="panel" id="uf_cliente" data-title="Update Alumno">
+                <h1>Update Cliente</h1>
+                <div class="container">
+                 <form>
+                  <div class="form-group">
+                    <input type="hidden" id="u_cl_id" class="form-control" placeholder="ID del Cliente" >
+                  </div>   
+                  <div class="form-group">
+                    <input type="text" id="u_cl_nombre" class="form-control" placeholder="Nombre del Cliente" >
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="u_cl_apellidos" class="form-control" placeholder="Apellidos del Cliente"  >
+                  </div>
+                    <div class="form-group">
+                    <input type="text" id="u_cl_email" class="form-control" placeholder="Email del Cliente"  >
+                  </div>
+                  <div class="form-group">
+                    <div class="btn btn-danger" onclick="$.cliente.ClienteUpdate(1,1)">Enviar!</div>
+                  </div>
+                </form>
+                </div>
+            </div>  
+            <!-- Lectura productos -->
+            <div class="panel" id="r_productos" data-title="Read Productos" data-selected="true">
+            </div>
+            <!-- Creacion productos -->
+            <div class="panel" id="c_producto" data-title="Create Producto">
+                <h1>Create Producto</h1>
+                <div class="container">
+                 <form>
+                  <div class="form-group">
+                    <input type="text" id="c_pr_nombre" class="form-control" placeholder="Nombre del Producto" >
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="c_pr_marca" class="form-control" placeholder="Marca del Producto"  >
+                  </div>
+                     <div class="form-group">
+                    <input type="number" id="c_pr_cantidad" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <div class="btn btn-danger" onclick="$.producto.ProductoCreate()">Enviar!</div>
+                  </div>
+                </form>
+                </div>
+            </div>
+            <!-- Borrado productos -->
+            <div class="panel" id="d_producto" data-title="Delete Cliente">
+                <h1>Delete Producto</h1>
+            </div>
+        <!-- Actualizacion productos -->
+        <div class="panel" id="u_producto" data-title="Update Producto">
+            <h1>Update Producto</h1>
+        </div>
+        <div class="panel" id="uf_producto" data-title="Update Producto">
+            <h1>Update Producto</h1>
+            <div class="container">
+             <form>
+              <div class="form-group">
+                <input type="hidden" id="u_pr_id" class="form-control" placeholder="ID del Cliente" >
+              </div>   
+              <div class="form-group">
+                <input type="text" id="u_pr_nombre" class="form-control" placeholder="Nombre del Producto" >
+              </div>
+                <div class="form-group">
+                    <input type="text" id="u_pr_marca" class="form-control" placeholder="Marca del Producto"  >
+                </div>
+                <div class="form-group">
+                    <input type="number" id="u_pr_cantidad" class="form-control"   >
+                </div>
+                 <div class="form-group">
+                    <div class="btn btn-danger" onclick="$.producto.ProductoUpdate(1,1)">Enviar!</div>
+                </div>
+                </form>
+                </div>
+            </div> 
+        </div>
+        
+        <nav id="left">
+            <div class="view active">
+                <header>
+                    <h1>Menu</h1>
+                </header>
+                <div class="pages">
+                    <div class="panel active" id="navPage1" data-title="Foobar">
+                        <ul class="list">
+                            <!-- Lectura Clientes -->
+                            <li><a href="#r_cliente" onclick="$.afui.clearHistory();$.cliente.ClienteRead()">ReadClientes</a></li>
+                            <!-- Creacion Clientes -->
+                            <li><a href="#c_cliente" onclick="$.afui.clearHistory()">CreateClientes</a></li>
+                            <!-- Borrado Clientes -->
+                             <li><a href="#d_cliente" onclick="$.afui.clearHistory();$.cliente.ClienteDelete()">DeleteClientes</a></li>
+                            <!-- Actualizacion Clientes -->
+                            <li><a href="#u_cliente" onclick="$.afui.clearHistory();$.cliente.ClienteUpdate()">UpdateCliente</a></li>
+                            <!-- Lectura Productos --> 
+                            <li><a href="#r_productos"
+                                   onclick="$.afui.clearHistory();$.producto.ProductoRead()">ReadProductos</a></li>
+                            <!-- Creacion Productos -->
+                            <li><a href="#c_producto" onclick="$.afui.clearHistory()">CreateProduto</a></li>
+                            <!-- Borrado Productos -->
+                            <li><a href="#d_producto" onclick="$.afui.clearHistory();$.producto.ProductoDelete()">DeleteProductos</a></li>
+                            <!-- Actualizacion Producto-->
+                            <li><a href="#u_producto" onclick="$.afui.clearHistory();$.producto.ProductoUpdate()">UpdateProducto</a></li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</body>
+
+</html>
