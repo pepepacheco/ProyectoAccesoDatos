@@ -1,8 +1,8 @@
-## H2 Proyecto Acceso datos
+## Proyecto Acceso datos
 
 Esta aplicación es una aplicación hibrida realizada con un servidor rest tomcat como back-end y una aplicacion realizada en xdk.
 
-###H3 Creacion sql
+### Creacion sql
 
 ```sql
 
